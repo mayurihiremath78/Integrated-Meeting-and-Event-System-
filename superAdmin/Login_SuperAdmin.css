@@ -1,0 +1,173 @@
+/* .login {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 10%;
+}
+
+.login h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.socialContainer {
+  margin-bottom: 20px;
+  margin-right: 40%;
+}
+
+span {
+  display: block;
+  font-size: 14px;
+  color: #777;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+  margin-right: 100%;
+}
+
+form input[type="text"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 25%;
+}
+
+form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 25%;
+}
+
+form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.googleLoginButton {
+  width: max-content;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4285F4;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 45%;
+}
+
+.googleLoginButton:hover {
+  background-color: #357ae8;
+} */
+
+
+.loginContainer {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 10%;
+  }
+  
+  .loginHeader {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .socialLoginContainer {
+    margin-bottom: 20px;
+    margin-right: 40%;
+  }
+  
+  .loginSpan {
+    display: block;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .loginForm label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+    margin-right: 100%;
+  }
+  
+  .loginForm input[type="text"],
+  .loginForm input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 25%;
+  }
+  
+  .loginForm input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 25%;
+  }
+  
+  .loginForm input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .googleLoginButton {
+    width: max-content;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4285F4;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 45%;
+  }
+  
+  .googleLoginButton:hover {
+    background-color: #357ae8;
+  }
+  

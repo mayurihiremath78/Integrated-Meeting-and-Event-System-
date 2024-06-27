@@ -1,0 +1,40 @@
+.content {
+  display: flex;
+  flex-direction: column; /* Stack the sections vertically */
+  align-items: center; /* Center the sections horizontally */
+  padding: 2rem;
+  background-color: #f9f9f9;
+  margin-top: 2%;
+}
+
+.section {
+  text-align: center;
+  margin: 2rem 0; /* Add vertical margin to separate the sections */
+  width: 80%;
+  max-width: 500px; /* Set a max width for better layout */
+  padding: 2rem; /* Add padding inside the section */
+  background-color: #fff; /* Set background color for each section */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow for better visual separation */
+}
+
+.section h1 {
+  margin-bottom: 1rem;
+}
+
+
+.btn_content {
+  display: inline-block;
+  width: 150px;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px; /* Add rounded corners to buttons */
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}

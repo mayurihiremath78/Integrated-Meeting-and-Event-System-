@@ -1,0 +1,72 @@
+.font-cursive {
+  font-family: 'Brush Script MT', cursive;
+}
+
+.certificate-container {
+  max-width: 32rem;
+  margin: auto;
+  padding: 2rem;
+  border-width: 4px;
+  border-color: #D97706; /* Tailwind class: border-yellow-500 */
+  border-radius: 0.5rem;
+}
+
+.badge {
+  width: 3rem;
+  height: 3rem;
+}
+
+.certificate-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.certificate-subtitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.certificate-achievement {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.certificate-present {
+  text-align: center;
+  color: #D97706; /* Tailwind class: text-yellow-500 */
+  margin-top: 1rem;
+}
+
+.certificate-username {
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Brush Script MT', cursive;
+  margin-top: 0.5rem;
+}
+
+.certificate-message {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.signature-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.signature {
+  text-align: center;
+}
+
+.signature-line {
+  border-top-width: 2px;
+  border-color: black;
+  width: 8rem;
+  margin: auto;
+}

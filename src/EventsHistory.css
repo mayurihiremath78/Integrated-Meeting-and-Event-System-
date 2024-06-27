@@ -1,0 +1,67 @@
+/* Dashboard.css */
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Style table headers */
+  th {
+    background-color: #f2f2f2;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Style table cells */
+  td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+  
+  /* Style alternate rows */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style buttons */
+  button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    cursor: pointer;
+    width: max-content;
+  }
+  
+  /* Style buttons with different colors */
+  button.edit {
+    background-color: #2dbb23;
+    color: white;
+    border: none;
+  
+  }
+  
+  button.edit:hover {
+    background-color: #4551a0;
+    
+  }
+  
+  button.delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+  
+  }
+  
+  button.delete:hover {
+    background-color: #da190b;
+  }
+  
+  
+  .button-container button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    margin-left: 2px;
+    cursor: pointer;
+    margin-bottom: 3px;
+  }
