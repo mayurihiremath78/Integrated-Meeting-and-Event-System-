@@ -1,58 +1,58 @@
-import React from 'react';
+
+import styles from 'C:/Users/kiran/task1_meeting_platform/src/Login.module.css';
+
+
+
+    
+// Login.js
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
-import styles from 'C:/Users/kiran/task1_meeting_platform/src/Login.module.css'; // Adjust this path if needed
-import { UserContext } from "C:/Users/kiran/task1_meeting_platform/src/UserContext.js";
+import CreateEvent from "C:/Users/kiran/task1_meeting_platform/src/CreateEvent.js"
+import { UserContext } from 'C:/Users/kiran/task1_meeting_platform/src/UserContext';
 
 
-function AdminLogin() {
-  const { register, handleSubmit } = useForm();
-  const { setUser } = React.useContext(UserContext);
+function Admin_Login() {
+  const { register, handleSubmit, getValues } = useForm();
+  const { setUser, updateName } = useContext(UserContext); // Destructure updateName from context
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
-    const { username, password } = data;
-    console.log('Submitting form with data:', data); // Debugging: log form data
-  
-    if (username && password) {
-      try {
-        const response = await axios.post('http://localhost:8000/Admin_Login', {
-          username,
-          password
-        });
-  
-        console.log('Server response:', response.data);
-        
-        if (response.status === 200) {
-          localStorage.setItem('adminLoggedIn', 'true');
-          localStorage.setItem('adminUsername', username);
-          setUser({ username });
-          navigate('/CreateEvent'); // Redirect to admin dashboard page after successful login
-        } else {
-          console.error('Login failed:', response.data);
-        }
-      } catch (error) {
-        console.error('There was an error!', error);
-      }
-    } else {
-      console.error('Username or password is missing');
+  const onSubmit = async () => {
+    const { name, contact, username, password } = getValues();
+    if (name && contact && username && password) {
+      localStorage.setItem('userLoggedIn', 'true');
+      localStorage.setItem('username', name);
+      updateName(name); // Update name in context
+      setUser({ name });
+      navigate('/CreateEvent'); // Redirect to event details page after successful login
+    }
+    try {
+      const response = await axios.post('http://localhost:8000/Admin_Login', {
+        name,
+        contact,
+        username,
+        password,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('There was an error!', error);
     }
   };
-  
 
   const onSuccess = (res) => {
     console.log(res); // Debugging to see the full response structure
     const googleUsername = res.profileObj.name; // Adjust this according to Google's response structure
 
     // Save username to localStorage and context
-    localStorage.setItem('adminLoggedIn', 'true');
-    localStorage.setItem('adminUsername', googleUsername);
+    localStorage.setItem('userLoggedIn', 'true');
+    localStorage.setItem('username', googleUsername);
+    updateName(googleUsername); // Update name in context
     setUser({ username: googleUsername });
 
-    // Navigate to admin dashboard page or any other desired page
-    navigate('/CreateEvent');
+    // Navigate to events list page or any other desired page
+    navigate('/ CreateEvent');
 
     console.log("Welcome", googleUsername);
   };
@@ -63,7 +63,7 @@ function AdminLogin() {
 
   return (
     <div className={styles.loginContainer}>
-      <h1 className={styles.loginHeader}>ADMIN SIGN IN</h1>
+      <h1 className={styles.loginHeader}>SIGN IN FOR ADMIN</h1>
       <div className={styles.socialLoginContainer}>
         <GoogleLogin
           clientId="259810239126-tao3bmh8dhl6g8qu6agh09eb0284mi0g.apps.googleusercontent.com"
@@ -77,16 +77,26 @@ function AdminLogin() {
       </div>
       <span className={styles.loginSpan}>Or use your account</span>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
+        <label>Name:</label>
+        <input type="text" {...register("name")} />
+        <br />
+
+        <label>Contact:</label>
+        <input type="text" {...register("contact")} />
+        <br />
+
         <label>Username:</label>
         <input type="text" {...register("username")} />
         <br />
         <label>Password:</label>
         <input type="password" {...register("password")} />
         <br />
+
         <input type="submit" value="Login" />
       </form>
     </div>
   );
 }
 
-export default AdminLogin;
+export default Admin_Login;
+

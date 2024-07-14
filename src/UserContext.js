@@ -22,19 +22,17 @@
 //     </UserContext.Provider>
 //   );
 // };
-
 import React, { createContext, useState } from 'react';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({
-    id: null,
+    userid: null,
     username: '',
-    // Add other user details if needed
   });
-  const [name, setName] = useState('Username'); // Set initial name
-  const [contact, setContact] = useState('Contact'); // Set initial contact
+  const [name, setName] = useState('Username');
+  const [contact, setContact] = useState('Contact');
 
   const updateName = (newName) => {
     setName(newName);
@@ -44,8 +42,8 @@ export const UserProvider = ({ children }) => {
     setContact(newContact);
   };
 
-  const setUserDetails = (id, username) => {
-    setUser({ id, username });
+  const setUserDetails = (userid, username) => {
+    setUser({ userid, username });
   };
 
   return (
@@ -54,3 +52,8 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+
+
+
+

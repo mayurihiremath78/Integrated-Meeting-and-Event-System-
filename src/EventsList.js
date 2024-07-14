@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext  } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { UserContext } from './UserContext'; 
 
 import EventsHistory  from './EventsHistory';
 import Events_Details_Page from './Events_Details_Page';
 import "./EventsList.css";
 import Payment from './Payment';
 
+
+
 const EventsList = () => {
+
+  
+  const { username, userid } = useContext(UserContext); 
+
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -93,6 +100,37 @@ const EventsList = () => {
     handleFilterChange(); // Trigger filter when search button is clicked
   };
 
+  // const handleJoinEvent = async (event) => {
+  //   try {
+  //     if (event.freeorpaid.toLowerCase() === 'free') {
+  //       // Register the event if it is free
+  //       await axios.post('http://localhost:8000/registerEvent', {
+  //         eventid: event.eventid,
+  //         eventname: event.eventname,
+  //         hostname:event.hostname,
+  //         description:event.description,
+  //         techstack:event.techstack,
+  //         startdate:event.date,
+  //         enddate:event.enddate,
+  //         payment:"Failed",
+  //         username: username,
+  //         userid: userid,
+
+  //       });
+  
+  //       // Navigate to EventsHistory page after successful registration
+  //       navigate('/EventsHistory', { state: { event } });
+  //     } else {
+  //       // For paid events, navigate to payment page directly
+  //       navigate('/Payment', { state: { event } });
+  //     }
+  //   } catch (error) {
+  //     console.error('Error handling event:', error);
+  //     // Handle errors, such as logging them or showing a user-friendly message
+  //   }
+  // };
+  
+  
   const handleJoinEvent = async (event) => {
     try {
       if (event.freeorpaid.toLowerCase() === 'free') {
@@ -100,16 +138,16 @@ const EventsList = () => {
         await axios.post('http://localhost:8000/registerEvent', {
           eventid: event.eventid,
           eventname: event.eventname,
-          hostname:event.hostname,
-          description:event.description,
-          techstack:event.techstack,
-          startdate:event.date,
-          enddate:event.enddate,
-          payment:"Failed"
+          hostname: event.hostname,
+          description: event.description,
+          techstack: event.techstack,
+          startdate: event.date,
+          enddate: event.enddate,
+          payment: "Failed",
+          username: username,
+          userid: userid,
         });
-  
-        // Navigate to EventsHistory page after successful registration
-        navigate('/EventsHistory', { state: { event } });
+      
       } else {
         // For paid events, navigate to payment page directly
         navigate('/Payment', { state: { event } });
@@ -119,7 +157,6 @@ const EventsList = () => {
       // Handle errors, such as logging them or showing a user-friendly message
     }
   };
-  
 
   return (
     <div className="app">
@@ -201,7 +238,15 @@ const EventsList = () => {
                       {event.freeorpaid}
                     </span>
                   </div>
-                  <img src={event.imageurl} alt={event.eventname} className="event-image" />
+                  
+                  {event.photo && (
+                    <img
+  className="event-image"
+  src={`data:${event.mimetype};base64,${event.photo}`}
+  alt={event.eventname}
+/>
+              )}
+                  
                   <div className="card-header">
                     <h3 className="event-name">{event.eventname}</h3>
                   </div>
@@ -214,9 +259,9 @@ const EventsList = () => {
                       <p>End Date: {formatDate(event.enddate)}</p>
                     </div>
                     <p className="event-description">{event.description}</p>
-                    <div>
-                      <button className="join-button" onClick={() => handleJoinEvent(event)}>Join Now</button>
-                      <button className="details-button" onClick={() => handleViewDetails(event)}>View Details</button>
+                    <div style={{ display: 'flex', justifyContent: 'pace-between' }}>
+                      <button className="join-button" onClick={() => handleJoinEvent(event)} style={{width:"30%"}}> Join Now</button>
+                      <button className="details-button" onClick={() => handleViewDetails(event)} style={{width:"30%",marginLeft:"39%"}}>View Details</button>
                     </div>
                   </div>
                 </div>

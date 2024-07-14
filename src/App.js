@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from "./Navbar.js";
@@ -13,7 +15,16 @@ import Admin_login from "./admin/Admin_login.js";
 import Sidebar from './components/sidebar/Sidebar';
 import { UserProvider } from './UserContext'; // Import UserProvider
 import Payment from "./Payment.js"
+import ChattingPage from "./ChattingPage.js";
 import EventsHistory  from "./EventsHistory.js";
+
+
+import AdminSidebar from 'C:/Users/kiran/task1_meeting_platform/src/admin/Admin_Sidebar.js';
+import UpcomingEvents from "./admin/UpcomingEvents.js";
+import OngoingEvents from "./admin/OngoingEvents.js";
+import PastEvents from "./admin/PastEvents.js";
+import Admin_EventsHistory from "./admin/Admin_EventsHistory.js";
+import ViewEventRegistrations from "./admin/ViewEventRegistrations.js";
 
 function App() {
   return (
@@ -26,7 +37,7 @@ function App() {
             <Route path="/contact" element={<NavbarOnly />} />
             <Route path="/login" element={<Login />} />
             <Route path="/blogs" element={<NavbarOnly />} />
-            <Route path="/CreateEvent" element={<PageWithSidebar component={CreateEvent} />} /> 
+           
             <Route path="/Dashboard" element={<PageWithSidebar component={Dashboard} />} />
             <Route path="/EventsList" element={<PageWithSidebar component={EventsList} />} />
             <Route path="/Events_Details_Page" element={<PageWithSidebar component={Events_Details_Page} />} />
@@ -35,6 +46,18 @@ function App() {
             <Route path="/Admin_login" element={<Admin_login />} />
             <Route path="/Payment" element={<PageWithSidebar component={Payment} />} />
             <Route path="/EventsHistory" element={<PageWithSidebar component={EventsHistory} />} />
+            <Route path="/ChattingPage" element={<PageWithSidebar component={ChattingPage} />} />
+            <Route path="/client" />
+
+
+            <Route path="/CreateEvent" element={<AdminWithSidebar component={CreateEvent} />} /> 
+            <Route path="/UpcomingEvents" element={<AdminWithSidebar component={UpcomingEvents} />} /> 
+            <Route path="/PastEvents" element={<AdminWithSidebar component={PastEvents} />} />
+            <Route path="/OngoingEvents" element={<AdminWithSidebar component={OngoingEvents} />} /> 
+            <Route path="/Admin_EventsHistory" element={<AdminWithSidebar component={Admin_EventsHistory} />} /> 
+            <Route path="/ViewEventRegistrations" element={<AdminWithSidebar  component={ViewEventRegistrations} />}/>
+
+           
           </Routes>
         </div>
       </Router>
@@ -42,7 +65,7 @@ function App() {
   );
 }
 
-// Home page component with Navbar and main content
+//Home page component with Navbar and main content
 const HomeWithContent = () => {
   return (
     <>
@@ -71,4 +94,21 @@ const PageWithSidebar = ({ component: Component }) => {
   );
 };
 
+const AdminWithSidebar = ({ component: Component }) => {
+  return (
+    <>
+      <div style={{ display: 'flex' }}>
+        <AdminSidebar />
+        <div style={{ marginLeft: '-10px', width: '100%' }}>
+          <Component />
+        </div>
+      </div>
+    </>
+  );
+};
+
 export default App;
+
+
+
+

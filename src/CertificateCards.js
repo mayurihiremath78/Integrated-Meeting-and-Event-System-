@@ -71,14 +71,14 @@ const CertificateCards = () => {
                         src={`data:image/jpeg;base64,${event.photo}`}
                         alt={event.eventname}
                         className="object-cover rounded-t-lg"
-                        style={{ width: '451px', height: '262px' }} // Fixed image size
+                        style={{ width: '350px', height: '262px' }} // Fixed image size
                       />
                     )}
                     <div className="p-4 w-full">
                       <div className="text-right text-sm text-zinc-500">
                         {new Date(event.date).toLocaleDateString()}
                       </div>
-                      <h1 >  {event.eventname}</h1>
+                      <h1>{event.eventname}</h1>
                       <p className="text-zinc-500 mb-1">Host Name:  {event.hostname}</p>
                       <p className="mb-4">Description:  {event.description}</p>
                      
